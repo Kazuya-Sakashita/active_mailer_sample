@@ -33,6 +33,8 @@ class PostsController < ApplicationController
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
+    PostInfoMailer.post_info_email(@post).deliver_later
+
   end
 
   # PATCH/PUT /posts/1 or /posts/1.json
